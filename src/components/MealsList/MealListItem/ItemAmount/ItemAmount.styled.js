@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const AmountContainer = styled.div`
-  text-align: center;
+  text-align: right;
 
   & button {
     font: inherit;

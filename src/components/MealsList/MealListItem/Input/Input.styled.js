@@ -11,7 +11,7 @@ const Container = styled.div`
     margin-right: 1rem;
   }
   & input {
-    width: 3rem;
+    width: 2.5rem;
     border-radius: 5px;
     border: 1px solid #ccc;
     font: inherit;

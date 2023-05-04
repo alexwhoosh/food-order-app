@@ -8,12 +8,11 @@ const ItemContainer = styled.div`
   justify-content: space-between;
 
   & h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0.5rem 0;
   }
 
   & span {
     font-style: italic;
-    margin: 0 0 0.5rem 0;
   }
 `;
 
