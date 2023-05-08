@@ -1,11 +1,11 @@
 import Input from "../Input/Input";
 import AmountContainer from "./ItemAmount.styled";
 
-const ItemAmount = () => {
+const ItemAmount = ({ onClick, amountRef }) => {
   return (
     <AmountContainer>
-      <Input />
-      <button>+ Add</button>
+      <Input amountRef={amountRef} />
+      <button onClick={onClick}>+ Add</button>
     </AmountContainer>
   );
 };

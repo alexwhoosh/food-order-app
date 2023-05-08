@@ -1,10 +1,10 @@
 import Container from "./Input.styled";
 
-const Input = () => {
+const Input = ({ onChange, amountRef }) => {
   return (
     <Container>
-      <label for="amount">Amount</label>
-      <input type="number" name="amount" id="amount" />
+      <label htmlFor="amount">Amount</label>
+      <input type="number" name="amount" id="amount" ref={amountRef} />
     </Container>
   );
 };

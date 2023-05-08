@@ -1,8 +1,11 @@
+import React, { useRef } from "react";
 import ItemAmount from "./ItemAmount/ItemAmount";
 import ItemContainer from "./MealListItem.styled";
 import PriceContainer from "./MealPrice.styled";
 
-const MealListItem = ({ name, description, price }) => {
+const MealListItem = ({ name, description, price, onAddMeal }) => {
+  const amountRef = useRef();
+
   return (
     <ItemContainer>
       <div>
@@ -11,7 +14,10 @@ const MealListItem = ({ name, description, price }) => {
         <PriceContainer>{`$${price}`}</PriceContainer>
       </div>
       <div>
-        <ItemAmount />
+        <ItemAmount
+          amountRef={amountRef}
+          onClick={() => onAddMeal(+amountRef.current.value, price, name)}
+        />
       </div>
     </ItemContainer>
   );
