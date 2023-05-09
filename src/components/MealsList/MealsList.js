@@ -3,24 +3,28 @@ import ListContainer from "./MealsList.styled";
 import MealListItem from "./MealListItem/MealListItem";
 import Card from "../Card.styled";
 import AmountContext from "../../context/amount-context";
+import OrderContext from "../../context/order-context";
 
 const meals = new Map();
 
 const MealsList = ({ items }) => {
-  const ctx = useContext(AmountContext);
+  const amountCtx = useContext(AmountContext);
+  const orderCtx = useContext(OrderContext);
 
   const addHandler = (amount, price, name) => {
     if (amount <= 0) return;
 
-    const currentAmount = (ctx.amount += amount);
-    ctx.setAmount(currentAmount);
+    const currentAmount = (amountCtx.amount += amount);
+    amountCtx.setAmount(currentAmount);
 
-    console.log(ctx.amount);
+    console.log(amountCtx.amount);
 
     if (meals.has(name)) {
       const meal = meals.get(name);
       const mealAmount = +meal.amount + amount;
       meals.set(name, { amount: mealAmount, price: price * mealAmount });
+
+      orderCtx.setOrder(meals);
       console.log(meals);
 
       return;
@@ -31,6 +35,7 @@ const MealsList = ({ items }) => {
       price: price * amount,
     });
 
+    orderCtx.setOrder(meals);
     console.log(meals);
   };
 
