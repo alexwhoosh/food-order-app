@@ -5,7 +5,7 @@ import Card from "../Card.styled";
 import AmountContext from "../../context/amount-context";
 import OrderContext from "../../context/order-context";
 
-const meals = new Map();
+const meals = {};
 
 const MealsList = ({ items }) => {
   const amountCtx = useContext(AmountContext);
@@ -19,10 +19,10 @@ const MealsList = ({ items }) => {
 
     console.log(amountCtx.amount);
 
-    if (meals.has(name)) {
-      const meal = meals.get(name);
+    if (meals[name]) {
+      const meal = meals[name];
       const mealAmount = +meal.amount + amount;
-      meals.set(name, { amount: mealAmount, price: price * mealAmount });
+      meals[name] = { amount: mealAmount, price: price * mealAmount };
 
       orderCtx.setOrder(meals);
       console.log(meals);
@@ -30,10 +30,10 @@ const MealsList = ({ items }) => {
       return;
     }
 
-    meals.set(name, {
+    meals[name] = {
       amount,
       price: price * amount,
-    });
+    };
 
     orderCtx.setOrder(meals);
     console.log(meals);
