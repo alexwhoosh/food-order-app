@@ -1,15 +1,21 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 import Cart from "./Cart";
-import { Backdrop, CartModalContainer } from "./CartModal.styled";
+import { Backdrop } from "./CartModal.styled";
 
 const CartModal = () => {
   return (
-    <Backdrop>
-      <CartModalContainer>
-        <Cart />
-      </CartModalContainer>
-    </Backdrop>
+    <>
+      {ReactDOM.createPortal(
+        <Backdrop />,
+        document.getElementById("backdrop-root")
+      )}
+      {ReactDOM.createPortal(
+        <Cart />,
+        document.getElementById("cart-modal-root")
+      )}
+    </>
   );
 };
 
