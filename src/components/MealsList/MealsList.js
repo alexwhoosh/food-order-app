@@ -22,7 +22,12 @@ const MealsList = ({ items }) => {
     if (meals[name]) {
       const meal = meals[name];
       const mealAmount = +meal.amount + amount;
-      meals[name] = { amount: mealAmount, price: price * mealAmount };
+      const mealPrice = price * mealAmount;
+
+      meals[name] = {
+        amount: mealAmount,
+        price: parseFloat(mealPrice.toFixed(2)),
+      };
 
       orderCtx.setOrder(meals);
       console.log(meals);
@@ -30,9 +35,11 @@ const MealsList = ({ items }) => {
       return;
     }
 
+    const mealPrice = price * amount;
+
     meals[name] = {
       amount,
-      price: price * amount,
+      price: parseFloat(mealPrice.toFixed(2)),
     };
 
     orderCtx.setOrder(meals);

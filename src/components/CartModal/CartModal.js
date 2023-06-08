@@ -1,25 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import Card from "../Card.styled";
-import CartItem from "./CartItem/CartItem";
-import OrderContext from "../../context/order-context";
+import Cart from "./Cart";
+import { Backdrop, CartModalContainer } from "./CartModal.styled";
 
 const CartModal = () => {
-  const orderCtx = useContext(OrderContext);
-
-  if (orderCtx.order == null) return;
-
   return (
-    <Card>
-      {Object.entries(orderCtx.order).map(([key, value]) => (
-        <CartItem
-          name={key}
-          price={value.price}
-          amount={value.amount}
-          key={Math.random()}
-        />
-      ))}
-    </Card>
+    <Backdrop>
+      <CartModalContainer>
+        <Cart />
+      </CartModalContainer>
+    </Backdrop>
   );
 };
 

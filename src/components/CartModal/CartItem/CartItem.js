@@ -6,7 +6,7 @@ const CartItem = ({ name, price, amount }) => {
     <ItemContainer>
       <div>
         <h2>{name}</h2>
-        <span>{price}</span>
+        <span>{`$${price}`}</span>
         <AmountBadge>{amount}</AmountBadge>
       </div>
       <div>

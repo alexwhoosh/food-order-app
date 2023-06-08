@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import ItemAmount from "./ItemAmount/ItemAmount";
 import ItemContainer from "./MealListItem.styled";
-import PriceContainer from "./MealPrice.styled";
+import MealPriceContainer from "./MealPrice.styled";
 
 const MealListItem = ({ name, description, price, onAddMeal }) => {
   const amountRef = useRef();
@@ -11,7 +11,7 @@ const MealListItem = ({ name, description, price, onAddMeal }) => {
       <div>
         <h3>{name}</h3>
         <span>{description}</span>
-        <PriceContainer>{`$${price}`}</PriceContainer>
+        <MealPriceContainer>{`$${price}`}</MealPriceContainer>
       </div>
       <div>
         <ItemAmount

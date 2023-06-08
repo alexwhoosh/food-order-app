@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import BackgroundImg from "./components/BackgroundImg/BackgroundImg";
 import Header from "./components/Header/Header";
 import MealsSummary from "./components/MealsSummary/MealsSummary";
