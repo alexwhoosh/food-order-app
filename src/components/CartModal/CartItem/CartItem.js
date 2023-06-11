@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import AmountContext from "../../../context/amount-context";
+import React, { useContext, useState } from "react";
+import OrderContext from "../../../context/order-context";
+import DUMMY_MEALS from "../../MealsList/dummy-meals";
 
 import ItemContainer, {
   Price,
@@ -10,15 +11,35 @@ import ItemContainer, {
   ButtonsContainer,
 } from "./CartItem.styled";
 
-const CartItem = ({ name, price, amount }) => {
-  const amountCtx = useContext(AmountContext);
+const CartItem = ({ name, price, amount, totalAmount, setTotalAmount }) => {
+  const orderCtx = useContext(OrderContext);
+  let [itemAmount, setItemAmount] = useState(amount);
+  let [itemPrice, setItemPrice] = useState(price);
 
-  const addItem = (amount) => {
-    amountCtx.setAmount(++amount);
+  const priceList = {};
+
+  for (let meal of DUMMY_MEALS) {
+    priceList[meal.name] = meal.price;
+  }
+
+  const addItem = () => {
+    const originalPrice = priceList[name];
+    const newPrice = parseFloat((itemPrice + originalPrice).toFixed(2));
+    setItemPrice(newPrice);
+    setItemAmount(++itemAmount);
+    // setTotalAmount(++totalAmount);
+
+    orderCtx.updateMeals(name, itemPrice, itemAmount);
   };
 
-  const removeItem = (amount) => {
-    amountCtx.setAmount(--amount);
+  const removeItem = () => {
+    const originalPrice = priceList[name];
+    const newPrice = parseFloat((itemPrice - originalPrice).toFixed(2));
+    setItemPrice(newPrice);
+    setItemAmount(--itemAmount);
+    // setTotalAmount(--totalAmount);
+
+    orderCtx.updateMeals(name, itemPrice, itemAmount);
   };
 
   return (
@@ -26,15 +47,15 @@ const CartItem = ({ name, price, amount }) => {
       <MealDetails>
         <h2>{name}</h2>
         <Summary>
-          <Price>{`$${price}`}</Price>
-          <Amount>{`x ${amountCtx.amount}`}</Amount>
+          <Price>{`$${itemPrice}`}</Price>
+          <Amount>{`x ${itemAmount}`}</Amount>
         </Summary>
       </MealDetails>
       <ButtonsContainer>
-        <Button type="button" onClick={() => removeItem(amountCtx.amount)}>
+        <Button type="button" onClick={removeItem}>
           -
         </Button>
-        <Button type="button" onClick={() => addItem(amountCtx.amount)}>
+        <Button type="button" onClick={addItem}>
           +
         </Button>
       </ButtonsContainer>

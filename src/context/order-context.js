@@ -1,25 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 
-const OrderContext = React.createContext({
-  order: null,
+export const OrderContext = React.createContext({
   setOrder: () => {},
+  addItem: () => {},
+  meals: null,
+  updateMeals: () => {},
 });
 
-export const OrderContextProvider = ({ children }) => {
-  const [order, setOrder] = useState(null);
+export const meals = {};
 
-  const updateOrder = (meals) => {
-    setOrder((prevOrder) => {
-      return {
-        ...prevOrder,
-        ...meals,
-      };
-    });
+export const OrderContextProvider = ({ children }) => {
+  const updateMeals = (name, price, amount) => {
+    meals[name] = {
+      amount: amount,
+      price: price,
+    };
   };
-  console.log("hi");
+
+  const addHandler = (amount, price, name, meals) => {
+    if (amount <= 0) return;
+
+    if (meals[name]) {
+      const meal = meals[name];
+      const mealAmount = +meal.amount + amount;
+      const mealPrice = parseFloat((price * mealAmount).toFixed(2));
+
+      updateMeals(name, mealPrice, mealAmount);
+      return;
+    }
+
+    const mealPrice = parseFloat((price * amount).toFixed(2));
+
+    updateMeals(name, mealPrice, amount);
+  };
 
   return (
-    <OrderContext.Provider value={{ order: order, setOrder: updateOrder }}>
+    <OrderContext.Provider
+      value={{
+        addItem: addHandler,
+        meals,
+        updateMeals,
+      }}
+    >
       {children}
     </OrderContext.Provider>
   );

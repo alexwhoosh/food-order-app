@@ -1,19 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import CartButton from "./CartButton.styled";
 import CartIcon from "./CartIcon";
 import Badge from "./Badge.styled";
 import Container from "./CartButtonContainer.styled";
-import AmountContext from "../../../context/amount-context";
 
-const CartButtonContainer = () => {
-  const ctx = useContext(AmountContext);
-
+const CartButtonContainer = ({ onClick, totalAmount }) => {
   return (
     <Container>
-      <CartButton>
+      <CartButton onClick={onClick}>
         <CartIcon />
         <span>Your Cart</span>
-        <Badge>{ctx.amount}</Badge>
+        <Badge>{totalAmount}</Badge>
       </CartButton>
     </Container>
   );
