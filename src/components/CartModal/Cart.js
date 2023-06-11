@@ -11,16 +11,18 @@ const Cart = ({ totalAmount, setTotalAmount }) => {
 
   return (
     <CartModalContainer>
-      {Object.entries(orderCtx.meals).map(([key, value]) => (
-        <CartItem
-          name={key}
-          price={value.price}
-          amount={value.amount}
-          key={Math.random()}
-          totalAmount={totalAmount}
-          setTotalAmount={setTotalAmount}
-        />
-      ))}
+      {Object.entries(orderCtx.meals)
+        .filter(([_, value]) => value.amount > 0)
+        .map(([key, value]) => (
+          <CartItem
+            name={key}
+            price={value.price}
+            amount={value.amount}
+            key={Math.random()}
+            totalAmount={totalAmount}
+            setTotalAmount={setTotalAmount}
+          />
+        ))}
     </CartModalContainer>
   );
 };

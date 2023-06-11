@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import DUMMY_MEALS from "../components/MealsList/dummy-meals";
 
@@ -9,37 +9,37 @@ export const OrderContext = React.createContext({
   updateMeals: () => {},
 });
 
-const meals = DUMMY_MEALS.reduce((acum, value) => {
+const initMeals = DUMMY_MEALS.reduce((acum, value) => {
   return {
     ...acum,
     [value.name]: {
-      amout: 0,
+      amount: 0,
       price: value.price,
     },
   };
 }, {});
 
 export const OrderContextProvider = ({ children }) => {
-  const updateMeals = (name, amount, price) => {
-    // meals[name] = {
-    //   amount: amount,
-    //   price: price,
-    // };
-    // console.log("Updating: ", meals);
+  const [meals, setMeals] = useState(initMeals);
+
+  const updateMeals = (name, amount) => {
+    setMeals((prevMeals) => {
+      return {
+        ...prevMeals,
+        [name]: {
+          ...prevMeals[name],
+          amount,
+        },
+      };
+    });
   };
 
-  const addItem = (amount, price, name, meals) => {
-    if (amount <= 0) return;
+  const addItem = (amount, name) => {
+    const meal = meals[name];
 
-    if (meals[name]) {
-      const meal = meals[name];
-      const mealAmount = +meal.amount + amount;
-
-      updateMeals(name, mealAmount);
-      return;
+    if (meal) {
+      updateMeals(name, meal.amount + amount);
     }
-
-    updateMeals(name, amount, price);
   };
 
   return (

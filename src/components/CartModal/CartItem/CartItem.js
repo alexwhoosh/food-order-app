@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import OrderContext from "../../../context/order-context";
-import DUMMY_MEALS from "../../MealsList/dummy-meals";
 
 import ItemContainer, {
   Price,
@@ -11,38 +10,26 @@ import ItemContainer, {
   ButtonsContainer,
 } from "./CartItem.styled";
 
-const CartItem = ({ name, price, amount, totalAmount, setTotalAmount }) => {
+const CartItem = ({ name, price, amount }) => {
   const orderCtx = useContext(OrderContext);
-  let [itemAmount, setItemAmount] = useState(amount);
-  let [itemPrice, setItemPrice] = useState(price);
 
   const addItem = () => {
-    setItemAmount(++itemAmount);
-    setTotalAmount(++totalAmount);
-    const newPrice = parseFloat((itemPrice * itemAmount).toFixed(2));
-    setItemPrice(newPrice);
-
-    // console.log("Adding item: ", originalPrice, itemPrice, price);
-
-    orderCtx.updateMeals(name, itemAmount);
+    orderCtx.updateMeals(name, amount + 1);
   };
 
   const removeItem = () => {
-    setItemAmount(--itemAmount);
-    setTotalAmount(--totalAmount);
-    const newPrice = parseFloat((itemPrice * itemAmount).toFixed(2));
-    setItemPrice(newPrice);
-
-    orderCtx.updateMeals(name, itemAmount);
+    orderCtx.updateMeals(name, amount - 1);
   };
+
+  const totalPrice = parseFloat((amount * price).toFixed(2));
 
   return (
     <ItemContainer>
       <MealDetails>
         <h2>{name}</h2>
         <Summary>
-          <Price>{`$${itemPrice}`}</Price>
-          <Amount>{`x ${itemAmount}`}</Amount>
+          <Price>{`$${totalPrice}`}</Price>
+          <Amount>{`x ${amount}`}</Amount>
         </Summary>
       </MealDetails>
       <ButtonsContainer>

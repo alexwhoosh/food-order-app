@@ -9,7 +9,6 @@ import CartModal from "./components/CartModal/CartModal";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
-  let [totalAmount, setTotalAmount] = useState(0);
 
   const closeModal = () => {
     setShowModal(false);
@@ -21,22 +20,11 @@ const App = () => {
 
   return (
     <OrderContextProvider>
-      <Header onClick={OnShowModal} totalAmount={totalAmount} />
+      <Header onClick={OnShowModal} />
       <BackgroundImg />;
       <MealsSummary />
-      <MealsList
-        items={DUMMY_MEALS}
-        totalAmount={totalAmount}
-        setTotalAmount={setTotalAmount}
-      />
-      {showModal && (
-        <CartModal
-          onClose={closeModal}
-          modalActive={showModal}
-          totalAmount={totalAmount}
-          setTotalAmount={setTotalAmount}
-        />
-      )}
+      <MealsList items={DUMMY_MEALS} />
+      {showModal && <CartModal onClose={closeModal} modalActive={showModal} />}
     </OrderContextProvider>
   );
 };
