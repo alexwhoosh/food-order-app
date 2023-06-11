@@ -16,30 +16,24 @@ const CartItem = ({ name, price, amount, totalAmount, setTotalAmount }) => {
   let [itemAmount, setItemAmount] = useState(amount);
   let [itemPrice, setItemPrice] = useState(price);
 
-  const priceList = {};
-
-  for (let meal of DUMMY_MEALS) {
-    priceList[meal.name] = meal.price;
-  }
-
   const addItem = () => {
-    const originalPrice = priceList[name];
-    const newPrice = parseFloat((itemPrice + originalPrice).toFixed(2));
-    setItemPrice(newPrice);
     setItemAmount(++itemAmount);
-    // setTotalAmount(++totalAmount);
+    setTotalAmount(++totalAmount);
+    const newPrice = parseFloat((itemPrice * itemAmount).toFixed(2));
+    setItemPrice(newPrice);
 
-    orderCtx.updateMeals(name, itemPrice, itemAmount);
+    // console.log("Adding item: ", originalPrice, itemPrice, price);
+
+    orderCtx.updateMeals(name, itemAmount);
   };
 
   const removeItem = () => {
-    const originalPrice = priceList[name];
-    const newPrice = parseFloat((itemPrice - originalPrice).toFixed(2));
-    setItemPrice(newPrice);
     setItemAmount(--itemAmount);
-    // setTotalAmount(--totalAmount);
+    setTotalAmount(--totalAmount);
+    const newPrice = parseFloat((itemPrice * itemAmount).toFixed(2));
+    setItemPrice(newPrice);
 
-    orderCtx.updateMeals(name, itemPrice, itemAmount);
+    orderCtx.updateMeals(name, itemAmount);
   };
 
   return (

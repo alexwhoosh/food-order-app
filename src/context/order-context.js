@@ -1,44 +1,52 @@
 import React from "react";
 
+import DUMMY_MEALS from "../components/MealsList/dummy-meals";
+
 export const OrderContext = React.createContext({
   setOrder: () => {},
   addItem: () => {},
-  meals: null,
+  meals: {},
   updateMeals: () => {},
 });
 
-export const meals = {};
+const meals = DUMMY_MEALS.reduce((acum, value) => {
+  return {
+    ...acum,
+    [value.name]: {
+      amout: 0,
+      price: value.price,
+    },
+  };
+}, {});
 
 export const OrderContextProvider = ({ children }) => {
-  const updateMeals = (name, price, amount) => {
-    meals[name] = {
-      amount: amount,
-      price: price,
-    };
+  const updateMeals = (name, amount, price) => {
+    // meals[name] = {
+    //   amount: amount,
+    //   price: price,
+    // };
+    // console.log("Updating: ", meals);
   };
 
-  const addHandler = (amount, price, name, meals) => {
+  const addItem = (amount, price, name, meals) => {
     if (amount <= 0) return;
 
     if (meals[name]) {
       const meal = meals[name];
       const mealAmount = +meal.amount + amount;
-      const mealPrice = parseFloat((price * mealAmount).toFixed(2));
 
-      updateMeals(name, mealPrice, mealAmount);
+      updateMeals(name, mealAmount);
       return;
     }
 
-    const mealPrice = parseFloat((price * amount).toFixed(2));
-
-    updateMeals(name, mealPrice, amount);
+    updateMeals(name, amount, price);
   };
 
   return (
     <OrderContext.Provider
       value={{
-        addItem: addHandler,
         meals,
+        addItem,
         updateMeals,
       }}
     >

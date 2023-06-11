@@ -15,8 +15,6 @@ const MealListItem = ({
   const amountRef = useRef();
   const orderCtx = useContext(OrderContext);
 
-  console.log(totalAmount);
-
   const updateTotalAmount = (amount) => {
     setTotalAmount(totalAmount + amount);
     // console.log(totalAmount);
@@ -33,7 +31,7 @@ const MealListItem = ({
         <ItemAmount
           amountRef={amountRef}
           onClick={() => {
-            onAddMeal(+amountRef.current.value, price, name, orderCtx.meals);
+            // onAddMeal(+amountRef.current.value, price, name, orderCtx.meals);
             updateTotalAmount(+amountRef.current.value);
           }}
         />
