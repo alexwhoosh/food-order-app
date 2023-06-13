@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import ItemAmount from "./ItemAmount/ItemAmount";
 import ItemContainer from "./MealListItem.styled";
 import MealPriceContainer from "./MealPrice.styled";
-
+import OrderContext from "../../../context/order-context";
 const MealListItem = ({ name, description, price, onAddMeal }) => {
   const amountRef = useRef();
-
+  const ctx = useContext(OrderContext);
   return (
     <ItemContainer>
       <div>
@@ -17,7 +17,8 @@ const MealListItem = ({ name, description, price, onAddMeal }) => {
         <ItemAmount
           amountRef={amountRef}
           onClick={() => {
-            onAddMeal(+amountRef.current.value, name);
+            // onAddMeal(+amountRef.current.value, name);
+            ctx.dispatch({ type: name, amount: +amountRef.current.value });
           }}
         />
       </div>

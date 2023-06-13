@@ -25,7 +25,7 @@ const Cart = ({ onClick }) => {
     .map((value) => value.price * value.amount)
     .reduce((acc, value) => acc + value, 0);
 
-  console.log(totalPrice);
+  console.log(orderCtx.orderStatus);
 
   let content = (
     <>
@@ -40,12 +40,20 @@ const Cart = ({ onClick }) => {
           />
         ))}
       <Total>
-        <h2>Total Amount</h2>
+        <h2>Total Price</h2>
         <span>{`$${parseFloat(totalPrice.toFixed(2))}`}</span>
       </Total>
       <ButtonContainer>
         <CloseButton onClick={onClick}>Close</CloseButton>
-        <OrderButton>Order</OrderButton>
+        <OrderButton
+          onClick={() => {
+            onClick();
+            // orderCtx.setOrderStatus(true);
+            orderCtx.dispatch({ type: "reset" });
+          }}
+        >
+          Order
+        </OrderButton>
       </ButtonContainer>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 
 import DUMMY_MEALS from "../components/MealsList/dummy-meals";
 
@@ -7,6 +7,9 @@ export const OrderContext = React.createContext({
   addItem: () => {},
   meals: {},
   updateMeals: () => {},
+  orderStatus: false,
+  setOrderStatus: () => {},
+  dispatch: () => {},
 });
 
 const initMeals = DUMMY_MEALS.reduce((acum, value) => {
@@ -19,35 +22,57 @@ const initMeals = DUMMY_MEALS.reduce((acum, value) => {
   };
 }, {});
 
+const reducer = (state, action) => {
+  if (action.type === "reset") {
+    return initMeals;
+  }
+
+  const result = {
+    ...state,
+    [action.type]: {
+      ...state[action.type],
+      amount: state[action.type].amount + action.amount,
+    },
+  };
+  console.log(action);
+
+  console.log(result);
+  return result;
+};
+
 export const OrderContextProvider = ({ children }) => {
-  const [meals, setMeals] = useState(initMeals);
+  // const [meals, setMeals] = useState(initMeals);
+  const [meals, dispatch] = useReducer(reducer, initMeals);
 
-  const updateMeals = (name, amount) => {
-    setMeals((prevMeals) => {
-      return {
-        ...prevMeals,
-        [name]: {
-          ...prevMeals[name],
-          amount,
-        },
-      };
-    });
-  };
+  // const updateOrderStatus = (value) => {
+  //   setOrderStatus(value);
+  // };
 
-  const addItem = (amount, name) => {
-    const meal = meals[name];
+  // const updateMeals = (name, amount) => {
+  //   setMeals((prevMeals) => {
+  //     return {
+  //       ...prevMeals,
+  //       [name]: {
+  //         ...prevMeals[name],
+  //         amount,
+  //       },
+  //     };
+  //   });
+  // };
 
-    if (meal) {
-      updateMeals(name, meal.amount + amount);
-    }
-  };
+  // const addItem = (amount, name) => {
+  //   const meal = meals[name];
+
+  //   if (meal) {
+  //     updateMeals(name, meal.amount + amount);
+  //   }
+  // };
 
   return (
     <OrderContext.Provider
       value={{
         meals,
-        addItem,
-        updateMeals,
+        dispatch,
       }}
     >
       {children}
