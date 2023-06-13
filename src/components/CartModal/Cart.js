@@ -8,9 +8,24 @@ import Total, {
 } from "./Total.styled";
 import OrderContext from "../../context/order-context";
 import { CartModalContainer } from "./CartModal.styled";
+import EmptyCartContainer, { ImgContainer } from "./Cart.styled";
+import { ButtonsContainer } from "./CartItem/CartItem.styled";
+import { Button } from "./Cart.styled";
+import image from "./img/empty.png";
 
 const Cart = ({ onClick }) => {
   const orderCtx = useContext(OrderContext);
+
+  const totalAmount = Object.values(orderCtx.meals)
+    .map((value) => value.amount)
+    .reduce((acc, value) => acc + value, 0);
+
+  const totalPrice = Object.values(orderCtx.meals)
+    .filter((value) => value.amount > 0)
+    .map((value) => value.price * value.amount)
+    .reduce((acc, value) => acc + value, 0);
+
+  console.log(totalPrice);
 
   let content = (
     <>
@@ -26,7 +41,7 @@ const Cart = ({ onClick }) => {
         ))}
       <Total>
         <h2>Total Amount</h2>
-        <span>{`price`}</span>
+        <span>{`$${parseFloat(totalPrice.toFixed(2))}`}</span>
       </Total>
       <ButtonContainer>
         <CloseButton onClick={onClick}>Close</CloseButton>
@@ -35,16 +50,19 @@ const Cart = ({ onClick }) => {
     </>
   );
 
-  const totalAmount = Object.entries(orderCtx.meals)
-    .map(([, value]) => value.amount)
-    .reduce((acc, value) => acc + value, 0);
-
   if (totalAmount === 0) {
     content = (
-      <div>
-        <span>Nothing to show</span>
-        <CloseButton onClick={onClick}>Close</CloseButton>
-      </div>
+      <EmptyCartContainer>
+        <h2>Your cart is empty</h2>
+        <ImgContainer>
+          <img src={image} alt="empty cart" />
+        </ImgContainer>
+
+        <span>Looks like you haven't ordered anything yet</span>
+        <div>
+          <Button onClick={onClick}>OK</Button>
+        </div>
+      </EmptyCartContainer>
     );
   }
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "./Cart.styled";
 
 const Total = styled.div`
   display: flex;
@@ -16,24 +17,31 @@ export const ButtonContainer = styled.div`
   text-align: right;
 
   & button {
-    font: inherit;
-    font-weight: bold;
-    cursor: pointer;
-    border: 1px solid #8a2b06;
+    border-radius: 20px;
+
     padding: 0.5rem 2rem;
-    border-radius: 25px;
-    margin-left: 1rem;
+    font-size: 1.1rem;
   }
 `;
 
-export const OrderButton = styled.button`
+export const OrderButton = styled(Button)`
   background-color: #8a2b06;
   color: white;
-`;
-export const CloseButton = styled.button`
-  background-color: transparent;
 
+  &:hover,
+  &:active {
+    background-color: #641e03;
+    border-color: #641e03;
+  }
+`;
+export const CloseButton = styled(Button)`
   color: #8a2b06;
+  background-color: transparent;
+  &:hover,
+  &:active {
+    background-color: #ffebe6;
+    border-color: #641e03;
+  }
 `;
 
 export default Total;

@@ -13,28 +13,43 @@ const ItemContainer = styled.div`
     color: black;
     font-size: 1.25rem;
   }
-`;
 
-export const Button = styled.button`
-  font: inherit;
-  font-weight: bold;
-  font-size: 1.25rem;
-  color: #8a2b06;
-  border: 1px solid #8a2b06;
-  width: 3rem;
-  text-align: center;
-  border-radius: 6px;
-  background-color: transparent;
-  cursor: pointer;
-  margin-left: 1rem;
-  margin: 0.25rem;
+  & button {
+    font-size: 1.25rem;
+    color: #8a2b06;
+    width: 3rem;
+    background-color: transparent;
+    font-weight: bold;
 
-  & :hover,
-  & :active {
-    background-color: #8a2b06;
-    color: white;
+    &:hover,
+    &:active {
+      background-color: #8a2b06;
+      color: white;
+    }
   }
 `;
+
+// export const Button = styled.button`
+//   font: inherit;
+//   font-weight: bold;
+//   font-size: 1.25rem;
+//   color: #8a2b06;
+//   border: 1px solid #8a2b06;
+//   width: 3rem;
+//   text-align: center;
+//   border-radius: 6px;
+//   background-color: transparent;
+//   cursor: pointer;
+//   margin-left: 1rem;
+//   margin: 0.25rem;
+
+//   & :hover,
+//   & :active {
+//     background-color: #8a2b06;
+//     color: white;
+//   }
+// `;
+
 export const Summary = styled.div`
   width: 10rem;
   display: flex;
