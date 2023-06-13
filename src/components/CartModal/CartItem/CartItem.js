@@ -26,7 +26,7 @@ const CartItem = ({ name, price, amount }) => {
   return (
     <ItemContainer>
       <MealDetails>
-        <h2>{name}</h2>
+        <h3>{name}</h3>
         <Summary>
           <Price>{`$${totalPrice}`}</Price>
           <Amount>{`x ${amount}`}</Amount>

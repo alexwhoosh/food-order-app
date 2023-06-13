@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import Cart from "./Cart";
 import { Backdrop } from "./CartModal.styled";
 
-const CartModal = ({ onClose, modalActive, totalAmount, setTotalAmount }) => {
+const CartModal = ({ onClose, modalActive }) => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -12,7 +12,7 @@ const CartModal = ({ onClose, modalActive, totalAmount, setTotalAmount }) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <Cart totalAmount={totalAmount} setTotalAmount={setTotalAmount} />,
+        <Cart onClick={onClose} />,
         document.getElementById("cart-modal-root")
       )}
     </>

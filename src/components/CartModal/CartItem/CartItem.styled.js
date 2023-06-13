@@ -8,9 +8,10 @@ const ItemContainer = styled.div`
   padding: 1rem 0;
   margin: 1rem 0;
 
-  & h2 {
+  & h3 {
     margin: 0 0 0.5rem 0;
-    color: #363636;
+    color: black;
+    font-size: 1.25rem;
   }
 `;
 
