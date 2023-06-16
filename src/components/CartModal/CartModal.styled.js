@@ -13,7 +13,7 @@ const slideDown = keyframes`
 `;
 
 export const Backdrop = styled.div`
-  display: ${({ modalActive }) => (modalActive ? "block" : "none")};
+  display: ${({ modalStatus }) => (modalStatus.backdrop ? "block" : "none")};
   position: fixed;
   top: 0;
   left: 0;

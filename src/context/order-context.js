@@ -1,14 +1,9 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
 import DUMMY_MEALS from "../components/MealsList/dummy-meals";
 
 export const OrderContext = React.createContext({
-  setOrder: () => {},
-  addItem: () => {},
   meals: {},
-  updateMeals: () => {},
-  orderStatus: false,
-  setOrderStatus: () => {},
   dispatch: () => {},
 });
 
@@ -27,46 +22,22 @@ const reducer = (state, action) => {
     return initMeals;
   }
 
+  const mealName = action.type;
+  const prevAmount = state[mealName].amount;
+
   const result = {
     ...state,
-    [action.type]: {
-      ...state[action.type],
-      amount: state[action.type].amount + action.amount,
+    [mealName]: {
+      ...state[mealName],
+      amount: prevAmount + action.amount,
     },
   };
-  console.log(action);
 
-  console.log(result);
   return result;
 };
 
 export const OrderContextProvider = ({ children }) => {
-  // const [meals, setMeals] = useState(initMeals);
   const [meals, dispatch] = useReducer(reducer, initMeals);
-
-  // const updateOrderStatus = (value) => {
-  //   setOrderStatus(value);
-  // };
-
-  // const updateMeals = (name, amount) => {
-  //   setMeals((prevMeals) => {
-  //     return {
-  //       ...prevMeals,
-  //       [name]: {
-  //         ...prevMeals[name],
-  //         amount,
-  //       },
-  //     };
-  //   });
-  // };
-
-  // const addItem = (amount, name) => {
-  //   const meal = meals[name];
-
-  //   if (meal) {
-  //     updateMeals(name, meal.amount + amount);
-  //   }
-  // };
 
   return (
     <OrderContext.Provider

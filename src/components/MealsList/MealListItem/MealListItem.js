@@ -17,7 +17,6 @@ const MealListItem = ({ name, description, price, onAddMeal }) => {
         <ItemAmount
           amountRef={amountRef}
           onClick={() => {
-            // onAddMeal(+amountRef.current.value, name);
             ctx.dispatch({ type: name, amount: +amountRef.current.value });
           }}
         />

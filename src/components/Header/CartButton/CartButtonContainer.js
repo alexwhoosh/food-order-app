@@ -13,7 +13,7 @@ const CartButtonContainer = ({ onClick }) => {
 
   return (
     <Container>
-      <CartButton onClick={onClick}>
+      <CartButton onClick={() => onClick({ type: "cart-open" })}>
         <CartIcon />
         <span>Your Cart</span>
         <Badge>{totalAmount}</Badge>

@@ -13,7 +13,7 @@ import { ButtonsContainer } from "./CartItem/CartItem.styled";
 import { Button } from "./Cart.styled";
 import image from "./img/empty.png";
 
-const Cart = ({ onClick }) => {
+const Cart = ({ onClose, modalStatus }) => {
   const orderCtx = useContext(OrderContext);
 
   const totalAmount = Object.values(orderCtx.meals)
@@ -25,7 +25,12 @@ const Cart = ({ onClick }) => {
     .map((value) => value.price * value.amount)
     .reduce((acc, value) => acc + value, 0);
 
-  console.log(orderCtx.orderStatus);
+  const onClick = (actionType) => {
+    onClose({ type: actionType });
+    if (actionType === "order-confirmed") {
+      orderCtx.dispatch({ type: "reset" });
+    }
+  };
 
   let content = (
     <>
@@ -44,14 +49,8 @@ const Cart = ({ onClick }) => {
         <span>{`$${parseFloat(totalPrice.toFixed(2))}`}</span>
       </Total>
       <ButtonContainer>
-        <CloseButton onClick={onClick}>Close</CloseButton>
-        <OrderButton
-          onClick={() => {
-            onClick();
-            // orderCtx.setOrderStatus(true);
-            orderCtx.dispatch({ type: "reset" });
-          }}
-        >
+        <CloseButton onClick={() => onClick("modal-closed")}>Close</CloseButton>
+        <OrderButton onClick={() => onClick("order-confirmed")}>
           Order
         </OrderButton>
       </ButtonContainer>
@@ -68,7 +67,7 @@ const Cart = ({ onClick }) => {
 
         <span>Looks like you haven't ordered anything yet</span>
         <div>
-          <Button onClick={onClick}>OK</Button>
+          <Button onClick={() => onClick("modal-closed")}>OK</Button>
         </div>
       </EmptyCartContainer>
     );
