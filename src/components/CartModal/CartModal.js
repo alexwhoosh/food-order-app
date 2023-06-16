@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 
 import Cart from "./Cart";
-import { Backdrop } from "./CartModal.styled";
+import { Backdrop } from "./Modal.styled";
 
 const CartModal = ({ onClose, modalStatus }) => {
   return (

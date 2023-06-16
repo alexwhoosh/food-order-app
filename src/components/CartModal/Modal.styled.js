@@ -23,7 +23,7 @@ export const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.75);
 `;
 
-export const CartModalContainer = styled.div`
+export const ModalContainer = styled.div`
   position: fixed;
   top: 20vh;
   left: 5%;

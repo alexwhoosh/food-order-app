@@ -7,7 +7,7 @@ import Total, {
   ButtonContainer,
 } from "./Total.styled";
 import OrderContext from "../../context/order-context";
-import { CartModalContainer } from "./CartModal.styled";
+import { ModalContainer } from "./Modal.styled";
 import EmptyCartContainer, { ImgContainer } from "./Cart.styled";
 import { ButtonsContainer } from "./CartItem/CartItem.styled";
 import { Button } from "./Cart.styled";
@@ -73,7 +73,7 @@ const Cart = ({ onClose, modalStatus }) => {
     );
   }
 
-  return <CartModalContainer>{content}</CartModalContainer>;
+  return <ModalContainer>{content}</ModalContainer>;
 };
 
 export default Cart;

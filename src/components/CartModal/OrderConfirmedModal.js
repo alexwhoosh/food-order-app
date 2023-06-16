@@ -1,8 +1,7 @@
 import ReactDOM from "react-dom";
 
-import { CartModalContainer } from "./CartModal.styled";
-import { ImgContainer, Button } from "./Cart.styled";
-import { Backdrop } from "./CartModal.styled";
+import { Backdrop } from "./Modal.styled";
+import ConfirmationMessage from "./ConfirmationMessage";
 
 const OrderConfirmedModal = ({ onClose, modalStatus }) => {
   return (
@@ -15,16 +14,7 @@ const OrderConfirmedModal = ({ onClose, modalStatus }) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <CartModalContainer>
-          <h2>Thank you for your order!</h2>
-          <ImgContainer></ImgContainer>
-          <span>You'll receive a notification when it's ready.</span>
-          <div>
-            <Button onClick={() => onClose({ type: "modal-closed" })}>
-              OK
-            </Button>
-          </div>
-        </CartModalContainer>,
+        <ConfirmationMessage onClose={onClose} />,
         document.getElementById("confirm-modal-root")
       )}
     </>
