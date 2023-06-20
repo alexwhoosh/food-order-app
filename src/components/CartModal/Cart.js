@@ -13,7 +13,7 @@ import { ButtonsContainer } from "./CartItem/CartItem.styled";
 import { Button } from "./Cart.styled";
 import image from "./img/empty.png";
 
-const Cart = ({ onClose, modalStatus }) => {
+const Cart = ({ onClose }) => {
   const orderCtx = useContext(OrderContext);
 
   const totalAmount = Object.values(orderCtx.meals)

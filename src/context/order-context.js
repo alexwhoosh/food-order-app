@@ -1,10 +1,11 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 
 import DUMMY_MEALS from "../components/MealsList/dummy-meals";
 
 export const OrderContext = React.createContext({
   meals: {},
   dispatch: () => {},
+  totalAmount: 0,
 });
 
 const initMeals = DUMMY_MEALS.reduce((acum, value) => {
@@ -39,11 +40,16 @@ const reducer = (state, action) => {
 export const OrderContextProvider = ({ children }) => {
   const [meals, dispatch] = useReducer(reducer, initMeals);
 
+  const totalAmount = Object.entries(meals)
+    .map(([, value]) => value.amount)
+    .reduce((acc, value) => acc + value, 0);
+
   return (
     <OrderContext.Provider
       value={{
         meals,
         dispatch,
+        totalAmount,
       }}
     >
       {children}

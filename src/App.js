@@ -35,12 +35,15 @@ const reducer = (state, action) => {
         ...initModalState,
       };
     }
+
+    default: {
+      return state;
+    }
   }
 };
 
 const App = () => {
   const [modal, dispatch] = useReducer(reducer, initModalState);
-  console.log(modal);
 
   return (
     <OrderContextProvider>

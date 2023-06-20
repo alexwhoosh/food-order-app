@@ -7,16 +7,13 @@ import OrderContext from "../../../context/order-context";
 
 const CartButtonContainer = ({ onClick }) => {
   const ctx = useContext(OrderContext);
-  const totalAmount = Object.entries(ctx.meals)
-    .map(([, value]) => value.amount)
-    .reduce((acc, value) => acc + value, 0);
 
   return (
     <Container>
       <CartButton onClick={() => onClick({ type: "cart-open" })}>
         <CartIcon />
         <span>Your Cart</span>
-        <Badge>{totalAmount}</Badge>
+        <Badge>{ctx.totalAmount}</Badge>
       </CartButton>
     </Container>
   );

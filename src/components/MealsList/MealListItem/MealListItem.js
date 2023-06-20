@@ -3,9 +3,10 @@ import ItemAmount from "./ItemAmount/ItemAmount";
 import ItemContainer from "./MealListItem.styled";
 import MealPriceContainer from "./MealPrice.styled";
 import OrderContext from "../../../context/order-context";
-const MealListItem = ({ name, description, price, onAddMeal }) => {
-  const amountRef = useRef();
+const MealListItem = ({ name, description, price }) => {
+  const ref = useRef(0);
   const ctx = useContext(OrderContext);
+
   return (
     <ItemContainer>
       <div>
@@ -15,9 +16,10 @@ const MealListItem = ({ name, description, price, onAddMeal }) => {
       </div>
       <div>
         <ItemAmount
-          amountRef={amountRef}
+          ref={ref}
+          totalAmount={ctx.totalAmount}
           onClick={() => {
-            ctx.dispatch({ type: name, amount: +amountRef.current.value });
+            ctx.dispatch({ type: name, amount: +ref.current.value });
           }}
         />
       </div>
