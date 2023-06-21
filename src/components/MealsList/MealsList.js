@@ -1,8 +1,12 @@
+import React, { useContext } from "react";
 import ListContainer from "./MealsList.styled";
 import MealListItem from "./MealListItem/MealListItem";
 import Card from "../Card.styled";
+import OrderContext from "../../context/order-context";
 
 const MealsList = ({ items }) => {
+  const orderCtx = useContext(OrderContext);
+
   return (
     <Card>
       <ListContainer>
@@ -13,6 +17,7 @@ const MealsList = ({ items }) => {
               name={dish.name}
               description={dish.description}
               price={dish.price}
+              onAddMeal={orderCtx.addItem}
             />
           ))}
         </ul>
