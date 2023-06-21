@@ -1,4 +1,4 @@
-import IconContainer from "./CartIconContainer";
+import IconContainer from "./CartIconContainer.styled";
 
 const CartIcon = () => {
   return (
