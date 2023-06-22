@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 
-import { Backdrop } from "./Modal.styled";
+import { Backdrop } from "../Modal.styled";
 import ConfirmationMessage from "./ConfirmationMessage";
 
 const OrderConfirmedModal = ({ onClose, modalStatus }) => {

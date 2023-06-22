@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 
-import CartItem from "./CartItem/CartItem";
+import CartItem from "../CartItem/CartItem";
 import Total, {
   CloseButton,
   OrderButton,
   ButtonContainer,
 } from "./Total.styled";
-import OrderContext from "../../context/order-context";
-import { ModalContainer } from "./Modal.styled";
+import OrderContext from "../../../context/order-context";
+import { ModalContainer } from "../Modal.styled";
 import EmptyCartContainer, { ImgContainer } from "./Cart.styled";
-import { ButtonsContainer } from "./CartItem/CartItem.styled";
+import { ButtonsContainer } from "../CartItem/CartItem.styled";
 import { Button } from "./Cart.styled";
 import image from "./img/empty.png";
 

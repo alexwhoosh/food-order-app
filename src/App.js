@@ -6,7 +6,7 @@ import MealsList from "./components/MealsList/MealsList";
 import DUMMY_MEALS from "./components/MealsList/dummy-meals";
 import { OrderContextProvider } from "./context/order-context";
 import CartModal from "./components/CartModal/CartModal";
-import OrderConfirmedModal from "./components/CartModal/OrderConfirmedModal";
+import OrderConfirmedModal from "./components/CartModal/ConfirmationMessage/OrderConfirmedModal";
 
 const initModalState = {
   backdrop: false,
