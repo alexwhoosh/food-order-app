@@ -11,7 +11,7 @@ import { ModalContainer } from "../Modal.styled";
 import EmptyCartContainer, { ImgContainer } from "./Cart.styled";
 import { ButtonsContainer } from "../CartItem/CartItem.styled";
 import { Button } from "./Cart.styled";
-import image from "./img/empty.png";
+import image from "../img/empty.png";
 
 const Cart = ({ onClose }) => {
   const orderCtx = useContext(OrderContext);

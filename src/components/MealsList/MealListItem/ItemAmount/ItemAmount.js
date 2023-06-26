@@ -1,6 +1,7 @@
 import { forwardRef, useState, useEffect } from "react";
 import Input from "../Input/Input";
 import AmountContainer from "./ItemAmount.styled";
+import Button from "../../../UI/Button.styled";
 
 const ItemAmount = forwardRef(function ItemAmount(
   { onClick, totalAmount },
@@ -21,7 +22,7 @@ const ItemAmount = forwardRef(function ItemAmount(
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
-      <button onClick={onClick}>+ Add</button>
+      <Button onClick={onClick}>+ Add</Button>
     </AmountContainer>
   );
 });

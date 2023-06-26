@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import Badge from "./Badge.styled";
-import CartButton from "./CartButton.styled";
+import Badge from "./CartButton/Badge.styled";
+import CartButton from "./CartButton/CartButton.styled";
 
 const Container = styled.div`
   &:hover,

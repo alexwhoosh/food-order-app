@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import CartButton from "./CartButton.styled";
-import CartIcon from "./CartIcon";
-import Badge from "./Badge.styled";
+import CartButton from "./CartButton/CartButton.styled";
+import CartIcon from "./CartIcon/CartIcon";
+import Badge from "./CartButton/Badge.styled";
 import Container from "./CartButtonContainer.styled";
 import OrderContext from "../../../context/order-context";
 

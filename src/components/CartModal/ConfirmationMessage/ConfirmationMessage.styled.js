@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ModalContainer } from "./Modal.styled";
+import { ModalContainer } from "../Modal.styled";
 
 const ConfirmationMessageContainer = styled(ModalContainer)`
   display: flex;

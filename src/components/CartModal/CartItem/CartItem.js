@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import OrderContext from "../../../context/order-context";
 
-import { Button } from "../Cart.styled";
+// import { Button } from "./Cart.styled";
 import ItemContainer, {
   Price,
   Amount,
@@ -9,6 +9,7 @@ import ItemContainer, {
   MealDetails,
   ButtonsContainer,
 } from "./CartItem.styled";
+import Button from "../../UI/Button.styled";
 
 const CartItem = ({ name, price, amount }) => {
   const orderCtx = useContext(OrderContext);

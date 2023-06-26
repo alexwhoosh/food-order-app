@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ListContainer from "./MealsList.styled";
 import MealListItem from "./MealListItem/MealListItem";
-import Card from "../Card.styled";
+import Card from "../UI/Card.styled";
 import OrderContext from "../../context/order-context";
 
 const MealsList = ({ items }) => {

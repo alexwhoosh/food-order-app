@@ -1,6 +1,7 @@
-import { ImgContainer, Button } from "./Cart.styled";
-import image from "./img/order-confirmed.png";
+import { ImgContainer } from "../Cart/Cart.styled";
+import image from "../img/order-confirmed.png";
 import ConfirmationMessageContainer from "./ConfirmationMessage.styled";
+import Button from "../../UI/Button.styled";
 
 const ConfirmationMessage = ({ onClose }) => {
   return (
