@@ -1,7 +1,7 @@
-import { ImgContainer } from "../Cart/Cart.styled";
+import { ImgContainer } from "../Cart/EmptyCart/EmptyCart.styled";
 import image from "../img/order-confirmed.png";
 import ConfirmationMessageContainer from "./ConfirmationMessage.styled";
-import Button from "../../UI/Button.styled";
+import { ConfirmButton } from "../../UI/Button.styled";
 
 const ConfirmationMessage = ({ onClose }) => {
   return (
@@ -12,7 +12,9 @@ const ConfirmationMessage = ({ onClose }) => {
       </ImgContainer>
       <span>You'll receive a notification when it's ready.</span>
       <div>
-        <Button onClick={() => onClose({ type: "modal-closed" })}>OK</Button>
+        <ConfirmButton onClick={() => onClose({ type: "modal-closed" })}>
+          OK
+        </ConfirmButton>
       </div>
     </ConfirmationMessageContainer>
   );

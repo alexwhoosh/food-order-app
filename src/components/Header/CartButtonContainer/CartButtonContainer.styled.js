@@ -4,15 +4,12 @@ import Badge from "./CartButton/Badge.styled";
 import CartButton from "./CartButton/CartButton.styled";
 
 const Container = styled.div`
-  &:hover,
-  &:active {
-    ${CartButton} {
-      background-color: #2c0d00;
-    }
+  &:hover ${CartButton} {
+    background-color: #3e100a;
+  }
 
-    ${Badge} {
-      background-color: #92320c;
-    }
+  &:hover ${Badge} {
+    background-color: #842e0c;
   }
 `;
 
