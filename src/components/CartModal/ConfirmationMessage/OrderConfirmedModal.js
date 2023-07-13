@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import { Backdrop } from "../Modal.styled";
 import ConfirmationMessage from "./ConfirmationMessage";
 
-const OrderConfirmedModal = ({ onClose, modalStatus }) => {
+const OrderConfirmedModal = ({ onClose, modalStatus: { backdrop } }) => {
   return (
     <>
       {ReactDOM.createPortal(
         <Backdrop
           onClick={() => onClose({ type: "modal-closed" })}
-          modalStatus={modalStatus}
+          $modalStatus={backdrop}
         />,
         document.getElementById("backdrop-root")
       )}

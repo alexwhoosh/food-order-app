@@ -1,8 +1,11 @@
 import React, { useRef, useContext } from "react";
 import ItemAmount from "./ItemAmount/ItemAmount";
-import ItemContainer from "./MealListItem.styled";
-import MealPriceContainer from "./MealPrice.styled";
+import ItemContainer, {
+  PriceContainer,
+  AmountContainer,
+} from "./MealListItem.styled";
 import OrderContext from "../../../context/order-context";
+
 const MealListItem = ({ name, description, price }) => {
   const ref = useRef(0);
   const ctx = useContext(OrderContext);
@@ -12,9 +15,9 @@ const MealListItem = ({ name, description, price }) => {
       <div>
         <h3>{name}</h3>
         <span>{description}</span>
-        <MealPriceContainer>{`$${price}`}</MealPriceContainer>
+        <PriceContainer>{`$${price}`}</PriceContainer>
       </div>
-      <div>
+      <AmountContainer>
         <ItemAmount
           ref={ref}
           totalAmount={ctx.totalAmount}
@@ -22,7 +25,7 @@ const MealListItem = ({ name, description, price }) => {
             ctx.dispatch({ type: name, amount: +ref.current.value });
           }}
         />
-      </div>
+      </AmountContainer>
     </ItemContainer>
   );
 };

@@ -4,13 +4,13 @@ import ReactDOM from "react-dom";
 import Cart from "./Cart/Cart";
 import { Backdrop } from "./Modal.styled";
 
-const CartModal = ({ onClose, modalStatus }) => {
+const CartModal = ({ onClose, modalStatus: { backdrop } }) => {
   return (
     <>
       {ReactDOM.createPortal(
         <Backdrop
           onClick={() => onClose({ type: "modal-closed" })}
-          modalStatus={modalStatus}
+          $modalStatus={backdrop}
         />,
         document.getElementById("backdrop-root")
       )}
