@@ -1,8 +1,7 @@
-import { ImgContainer } from "../Cart/Cart.styled";
-import image from "../img/order-confirmed.png";
+import { ImgContainer, MessageContainer } from "../CartModal/Cart/Cart.styled";
+import image from "../../../assets/images/order-confirmed.png";
 import { ConfirmButton } from "../../UI/Button.styled";
 import { ModalContainer } from "../Modal.styled";
-import { MessageContainer } from "../Cart/Cart.styled";
 
 const ConfirmationMessage = ({ onClose }) => {
   return (

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import CartItem from "../CartItem/CartItem";
+import CartItem from "./CartItem/CartItem";
 import Total, { CustomButton } from "./Total.styled";
-import OrderContext from "../../../context/order-context";
-import { ModalContainer } from "../Modal.styled";
+import OrderContext from "../../../../context/order-context";
+import { ModalContainer } from "../../Modal.styled";
 import { ButtonContainer } from "./Cart.styled";
 
 const FullCart = ({ onClick }) => {

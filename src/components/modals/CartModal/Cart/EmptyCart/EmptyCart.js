@@ -1,8 +1,8 @@
 import React from "react";
 import EmptyCartContainer from "./EmptyCart.styled";
-import { ConfirmButton } from "../../../UI/Button.styled";
-import image from "../../img/empty.png";
-import { ModalContainer } from "../../Modal.styled";
+import { ConfirmButton } from "../../../../UI/Button.styled";
+import image from "../../../../../assets/images/empty.png";
+import { ModalContainer } from "../../../Modal.styled";
 import { ImgContainer } from "../Cart.styled";
 
 const EmptyCart = ({ onClick }) => {

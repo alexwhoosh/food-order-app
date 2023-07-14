@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import OrderContext from "../../../context/order-context";
+import OrderContext from "../../../../context/order-context";
 import EmptyCart from "./EmptyCart/EmptyCart";
 import FullCart from "./FullCart";
 

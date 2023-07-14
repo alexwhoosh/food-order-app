@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import OrderContext from "../../../context/order-context";
-import { ButtonContainer } from "../Cart/Cart.styled";
+import OrderContext from "../../../../../context/order-context";
+import { ButtonContainer } from "../Cart.styled";
 import ItemContainer, {
   Price,
   Amount,

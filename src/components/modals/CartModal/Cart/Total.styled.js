@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../../UI/Button.styled";
+import Button from "../../../UI/Button.styled";
 
 const Total = styled.div`
   display: flex;
