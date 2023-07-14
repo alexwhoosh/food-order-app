@@ -38,9 +38,7 @@ export const Amount = styled.span`
   color: #363636;
 `;
 
-export const CustomButton = styled(Button).attrs(() => ({
-  type: "button",
-}))`
+export const CustomButton = styled(Button)`
   color: #8a2b06;
   width: 3rem;
   border-radius: 6px;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const Button = styled.button.attrs(() => ({
+  type: "button",
+}))`
   font: inherit;
   font-weight: bold;
   cursor: pointer;
