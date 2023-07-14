@@ -13,6 +13,7 @@ const mealsAppear = keyframes`
 `;
 
 const ListContainer = styled.div`
+  max-width: 60rem;
   width: 95%;
   margin: 2rem auto;
   animation: ${mealsAppear} 1s ease-out forwards;

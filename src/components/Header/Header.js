@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderContainer from "./Header.styled";
-import CartButtonContainer from "./CartButton/CartButtonContainer";
+import CartButtonContainer from "./CartButtonContainer/CartButtonContainer";
 
 const Header = ({ onClick }) => {
   return (

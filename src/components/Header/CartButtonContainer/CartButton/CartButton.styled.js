@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import Button from "../../../UI/Button.styled";
 
 const bumpAnimation = keyframes`
     0% {
@@ -18,18 +19,13 @@ const bumpAnimation = keyframes`
     }
 `;
 
-const CartButton = styled.button`
-  cursor: pointer;
-  font: inherit;
+const CartButton = styled(Button)`
   border: none;
   background-color: #4d1601;
   color: white;
   padding: 0.75rem 3rem;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  border-radius: 25px;
-  font-weight: bold;
   animation: ${bumpAnimation} 400ms ease-out;
 `;
 

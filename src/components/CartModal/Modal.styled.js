@@ -13,7 +13,7 @@ const slideDown = keyframes`
 `;
 
 export const Backdrop = styled.div`
-  display: ${({ modalStatus }) => (modalStatus.backdrop ? "block" : "none")};
+  display: ${({ $modalStatus }) => ($modalStatus ? "block" : "none")};
   position: fixed;
   top: 0;
   left: 0;
@@ -34,6 +34,7 @@ export const ModalContainer = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: ${slideDown} 300ms ease-out forwards;
+
   @media (min-width: 768px) {
     width: 40rem;
     left: calc(50% - 20rem);
