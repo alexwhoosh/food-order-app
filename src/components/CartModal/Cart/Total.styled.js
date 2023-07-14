@@ -13,7 +13,9 @@ const Total = styled.div`
   }
 `;
 
-export const CustomButton = styled(Button)`
+export const CustomButton = styled(Button).attrs(() => ({
+  type: "button",
+}))`
   margin: 0 0 0.5rem 0.5rem;
   font-size: 1.2rem;
   font-weight: lighter;

@@ -13,3 +13,10 @@ export const ImgContainer = styled.div`
     object-fit: cover;
   }
 `;
+
+export const MessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
+  text-align: center;
+`;

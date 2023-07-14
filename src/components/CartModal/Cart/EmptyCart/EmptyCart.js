@@ -13,7 +13,6 @@ const EmptyCart = ({ onClick }) => {
         <ImgContainer>
           <img src={image} alt="empty cart" />
         </ImgContainer>
-
         <span>Looks like you haven't ordered anything yet</span>
         <div>
           <ConfirmButton onClick={() => onClick("modal-closed")}>
