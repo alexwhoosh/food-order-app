@@ -13,17 +13,13 @@ const Total = styled.div`
   }
 `;
 
-export const ButtonContainer = styled.div`
-  text-align: right;
+export const CustomButton = styled(Button)`
+  margin: 0 0 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  padding: 0.5rem 1.5rem;
 
-  & ${Button} {
-    margin: 0 0 0.5rem 0.5rem;
-    font-size: 1.2rem;
-    font-weight: lighter;
-    padding: 0.5rem 1.5rem;
-  }
-
-  & .order {
+  &.order {
     background-color: #8a2b06;
     color: white;
 
@@ -34,7 +30,7 @@ export const ButtonContainer = styled.div`
     }
   }
 
-  & .close {
+  &.close {
     color: #8a2b06;
     background-color: transparent;
     &:hover,

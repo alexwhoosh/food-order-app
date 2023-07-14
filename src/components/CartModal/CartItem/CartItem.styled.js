@@ -8,32 +8,13 @@ const ItemContainer = styled.div`
   border-bottom: 2px solid #8a2b06;
   padding: 1rem 0;
   margin: 1rem 0;
+`;
 
+export const MealDetails = styled.div`
   & h3 {
     margin: 0 0 0.5rem 0;
     color: black;
     font-size: 1.3rem;
-  }
-`;
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  & ${Button} {
-    color: #8a2b06;
-    width: 3rem;
-    border-radius: 6px;
-    background-color: transparent;
-    margin: 0 0 0 0.5rem;
-    font-size: 1.25rem;
-    padding: 0.25rem 1rem;
-
-    &:hover,
-    &:active {
-      background-color: #8a2b06;
-      color: white;
-    }
   }
 `;
 
@@ -57,6 +38,22 @@ export const Amount = styled.span`
   color: #363636;
 `;
 
-export const MealDetails = styled.div``;
+export const CustomButton = styled(Button).attrs(() => ({
+  type: "button",
+}))`
+  color: #8a2b06;
+  width: 3rem;
+  border-radius: 6px;
+  background-color: transparent;
+  margin: 0 0 0 0.5rem;
+  font-size: 1.25rem;
+  padding: 0.25rem 1rem;
+
+  &:hover,
+  &:active {
+    background-color: #8a2b06;
+    color: white;
+  }
+`;
 
 export default ItemContainer;

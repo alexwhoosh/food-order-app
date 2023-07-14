@@ -1,4 +1,4 @@
-import { ImgContainer } from "../Cart/EmptyCart/EmptyCart.styled";
+import { ImgContainer } from "../Cart/Cart.styled";
 import image from "../img/order-confirmed.png";
 import ConfirmationMessageContainer from "./ConfirmationMessage.styled";
 import { ConfirmButton } from "../../UI/Button.styled";

@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import OrderContext from "../../../context/order-context";
-
+import { ButtonContainer } from "../Cart/Cart.styled";
 import ItemContainer, {
   Price,
   Amount,
   Summary,
   MealDetails,
-  ButtonsContainer,
+  CustomButton,
 } from "./CartItem.styled";
-import Button from "../../UI/Button.styled";
 
 const CartItem = ({ name, price, amount }) => {
   const orderCtx = useContext(OrderContext);
@@ -32,14 +31,10 @@ const CartItem = ({ name, price, amount }) => {
           <Amount>{`x ${amount}`}</Amount>
         </Summary>
       </MealDetails>
-      <ButtonsContainer>
-        <Button type="button" onClick={removeItem}>
-          -
-        </Button>
-        <Button type="button" onClick={addItem}>
-          +
-        </Button>
-      </ButtonsContainer>
+      <ButtonContainer>
+        <CustomButton onClick={removeItem}>-</CustomButton>
+        <CustomButton onClick={addItem}>+</CustomButton>
+      </ButtonContainer>
     </ItemContainer>
   );
 };

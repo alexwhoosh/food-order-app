@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import CartItem from "../CartItem/CartItem";
-import Total, { ButtonContainer } from "./Total.styled";
-import Button from "../../UI/Button.styled";
+import Total, { CustomButton } from "./Total.styled";
 import OrderContext from "../../../context/order-context";
 import { ModalContainer } from "../Modal.styled";
+import { ButtonContainer } from "./Cart.styled";
 
 const FullCart = ({ onClick }) => {
   const orderCtx = useContext(OrderContext);
@@ -30,12 +30,15 @@ const FullCart = ({ onClick }) => {
         <span>{`$${parseFloat(totalPrice.toFixed(2))}`}</span>
       </Total>
       <ButtonContainer>
-        <Button className="close" onClick={() => onClick("modal-closed")}>
+        <CustomButton className="close" onClick={() => onClick("modal-closed")}>
           Close
-        </Button>
-        <Button className="order" onClick={() => onClick("order-confirmed")}>
+        </CustomButton>
+        <CustomButton
+          className="order"
+          onClick={() => onClick("order-confirmed")}
+        >
           Order
-        </Button>
+        </CustomButton>
       </ButtonContainer>
     </ModalContainer>
   );
