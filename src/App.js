@@ -7,6 +7,7 @@ import DUMMY_MEALS from "./components/Meals/MealsList/dummy-meals";
 import { OrderContextProvider } from "./context/order-context";
 import CartModal from "./components/modals/CartModal/CartModal";
 import OrderConfirmedModal from "./components/modals/ConfirmationMessageModal/OrderConfirmedModal";
+import { MainContent } from "./App.styled";
 
 const initModalState = {
   backdrop: false,
@@ -48,9 +49,11 @@ const App = () => {
   return (
     <OrderContextProvider>
       <Header onClick={dispatch} />
-      <BackgroundImg />
-      <MealsSummary />
-      <MealsList items={DUMMY_MEALS} />
+      <MainContent>
+        <BackgroundImg />
+        <MealsSummary />
+        <MealsList items={DUMMY_MEALS} />
+      </MainContent>
       {modal.cart && <CartModal onClose={dispatch} modalStatus={modal} />}
       {modal.confirm && (
         <OrderConfirmedModal onClose={dispatch} modalStatus={modal} />
