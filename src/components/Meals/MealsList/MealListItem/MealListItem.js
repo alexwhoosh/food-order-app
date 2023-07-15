@@ -6,7 +6,7 @@ import ItemContainer, {
 } from "./MealListItem.styled";
 import OrderContext from "../../../../context/order-context";
 
-const MealListItem = ({ name, description, price }) => {
+const MealListItem = ({ name, description, price, id }) => {
   const ref = useRef(0);
   const ctx = useContext(OrderContext);
 
@@ -21,6 +21,7 @@ const MealListItem = ({ name, description, price }) => {
         <ItemAmount
           ref={ref}
           totalAmount={ctx.totalAmount}
+          id={id}
           onClick={() => {
             ctx.dispatch({ type: name, amount: +ref.current.value });
           }}

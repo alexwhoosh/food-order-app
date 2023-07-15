@@ -3,7 +3,7 @@ import Input from "../Input/Input";
 import Button from "../../../../UI/Button.styled";
 
 const ItemAmount = forwardRef(function ItemAmount(
-  { onClick, totalAmount },
+  { onClick, totalAmount, id },
   ref
 ) {
   const [value, setValue] = useState(0);
@@ -18,6 +18,7 @@ const ItemAmount = forwardRef(function ItemAmount(
     <>
       <Input
         ref={ref}
+        id={id}
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
