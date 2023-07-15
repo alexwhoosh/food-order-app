@@ -13,11 +13,11 @@ const CartItem = ({ name, price, amount }) => {
   const orderCtx = useContext(OrderContext);
 
   const addItem = () => {
-    orderCtx.dispatch({ type: name, amount: 1 });
+    orderCtx.dispatch({ type: "ADD_ITEM", name: name, amount: 1 });
   };
 
   const removeItem = () => {
-    orderCtx.dispatch({ type: name, amount: -1 });
+    orderCtx.dispatch({ type: "ADD_ITEM", name: name, amount: -1 });
   };
 
   const totalPrice = parseFloat((amount * price).toFixed(2));

@@ -23,7 +23,11 @@ const MealListItem = ({ name, description, price, id }) => {
           totalAmount={ctx.totalAmount}
           id={id}
           onClick={() => {
-            ctx.dispatch({ type: name, amount: +ref.current.value });
+            ctx.dispatch({
+              type: "ADD_ITEM",
+              name: name,
+              amount: +ref.current.value,
+            });
           }}
         />
       </AmountContainer>

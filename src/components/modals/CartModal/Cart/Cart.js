@@ -14,7 +14,7 @@ const Cart = ({ onClose }) => {
   const onClick = (actionType) => {
     onClose({ type: actionType });
     if (actionType === "order-confirmed") {
-      orderCtx.dispatch({ type: "reset" });
+      orderCtx.dispatch({ type: "RESET" });
     }
   };
 
