@@ -4,7 +4,7 @@ import ItemContainer, {
   PriceContainer,
   AmountContainer,
 } from "./MealListItem.styled";
-import OrderContext from "../../../context/order-context";
+import OrderContext from "../../../../context/order-context";
 
 const MealListItem = ({ name, description, price }) => {
   const ref = useRef(0);

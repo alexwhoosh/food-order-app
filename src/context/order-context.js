@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 
-import DUMMY_MEALS from "../components/MealsList/dummy-meals";
+import DUMMY_MEALS from "../components/Meals/MealsList/dummy-meals";
 
 export const OrderContext = React.createContext({
   meals: {},
