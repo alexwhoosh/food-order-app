@@ -7,6 +7,7 @@ const Total = styled.div`
   align-items: center;
   font-weight: bold;
   font-size: 1.1rem;
+  margin: 0.5rem 1rem 0;
 
   & span {
     font-size: 1.6rem;

@@ -1,13 +1,18 @@
 import styled from "styled-components";
 import Button from "../../../../UI/Button.styled";
 
-const ItemContainer = styled.div`
+export const CartItemsList = styled.ul`
+  margin: 0 1rem;
+  padding-left: 0;
+`;
+
+const ItemContainer = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #8a2b06;
   padding: 1rem 0;
-  margin: 1rem 0;
+  margin: 1rem 0 0;
 `;
 
 export const MealDetails = styled.div`
