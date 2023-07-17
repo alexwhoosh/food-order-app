@@ -26,7 +26,10 @@ const CartButton = styled(Button)`
   padding: 0.75rem 3rem;
   display: flex;
   align-items: center;
-  animation: ${bumpAnimation} 400ms ease-out;
+
+  &.bump {
+    animation: ${bumpAnimation} 400ms ease-out;
+  }
 `;
 
 export default CartButton;
