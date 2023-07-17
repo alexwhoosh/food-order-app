@@ -19,23 +19,37 @@ const initMeals = DUMMY_MEALS.reduce((acum, value) => {
 }, {});
 
 const reducer = (state, action) => {
-  if (action.type === "RESET") {
-    return initMeals;
-  }
+  const mealName = action.name;
+  const prevAmount = state[mealName]?.amount ?? 0;
 
-  if (action.type === "ADD_ITEM") {
-    const mealName = action.name;
-    const prevAmount = state[mealName].amount;
+  switch (action.type) {
+    case "RESET": {
+      return initMeals;
+    }
 
-    const result = {
-      ...state,
-      [mealName]: {
-        ...state[mealName],
-        amount: prevAmount + action.amount,
-      },
-    };
+    case "ADD_ITEM": {
+      return {
+        ...state,
+        [mealName]: {
+          ...state[mealName],
+          amount: prevAmount + action.amount,
+        },
+      };
+    }
 
-    return result;
+    case "REMOVE_ITEM": {
+      return {
+        ...state,
+        [mealName]: {
+          ...state[mealName],
+          amount: prevAmount - 1,
+        },
+      };
+    }
+
+    default: {
+      return initMeals;
+    }
   }
 };
 

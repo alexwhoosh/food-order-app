@@ -4,6 +4,23 @@ import Button from "../../../../UI/Button.styled";
 export const CartItemsList = styled.ul`
   margin: 0 1rem;
   padding-left: 0;
+  max-height: 20rem;
+  overflow-y: auto;
+  padding-right: 1rem;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    border-radius: 100px;
+  }
 `;
 
 const ItemContainer = styled.li`

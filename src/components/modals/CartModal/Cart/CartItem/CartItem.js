@@ -17,7 +17,7 @@ const CartItem = ({ name, price, amount }) => {
   };
 
   const removeItem = () => {
-    orderCtx.dispatch({ type: "ADD_ITEM", name: name, amount: -1 });
+    orderCtx.dispatch({ type: "REMOVE_ITEM", name: name });
   };
 
   const totalPrice = parseFloat((amount * price).toFixed(2));
