@@ -14,6 +14,7 @@ const initMeals = DUMMY_MEALS.reduce((acum, value) => {
     [value.name]: {
       amount: 0,
       price: value.price,
+      id: value.id,
     },
   };
 }, {});
@@ -23,11 +24,10 @@ const reducer = (state, action) => {
   const prevAmount = state[mealName]?.amount ?? 0;
 
   switch (action.type) {
-    case "RESET": {
+    case "RESET":
       return initMeals;
-    }
 
-    case "ADD_ITEM": {
+    case "ADD_ITEM":
       return {
         ...state,
         [mealName]: {
@@ -35,9 +35,8 @@ const reducer = (state, action) => {
           amount: prevAmount + action.amount,
         },
       };
-    }
 
-    case "REMOVE_ITEM": {
+    case "REMOVE_ITEM":
       return {
         ...state,
         [mealName]: {
@@ -45,20 +44,19 @@ const reducer = (state, action) => {
           amount: prevAmount - 1,
         },
       };
-    }
 
-    default: {
+    default:
       return initMeals;
-    }
   }
 };
 
 export const OrderContextProvider = ({ children }) => {
   const [meals, dispatch] = useReducer(reducer, initMeals);
 
-  const totalAmount = Object.entries(meals)
-    .map(([, value]) => value.amount)
-    .reduce((acc, value) => acc + value, 0);
+  const totalAmount = Object.values(meals).reduce(
+    (acc, value) => acc + value.amount,
+    0
+  );
 
   return (
     <OrderContext.Provider

@@ -10,7 +10,7 @@ const CartButtonContainer = ({ onClick }) => {
 
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
 
-  const btnAmimation = btnIsHighlighted ? "bump" : "";
+  const btnAnimation = btnIsHighlighted ? "bump" : "";
 
   useEffect(() => {
     if (totalAmount === 0) return;
@@ -29,7 +29,7 @@ const CartButtonContainer = ({ onClick }) => {
   return (
     <Container>
       <CartButton
-        className={btnAmimation}
+        className={btnAnimation}
         onClick={() => onClick({ type: "cart-open" })}
       >
         <CartIcon />

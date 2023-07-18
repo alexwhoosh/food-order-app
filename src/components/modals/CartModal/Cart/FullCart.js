@@ -24,13 +24,13 @@ const FullCart = ({ onClick }) => {
               name={key}
               price={value.price}
               amount={value.amount}
-              key={Math.random()}
+              key={value.id}
             />
           ))}
       </CartItemsList>
       <Total>
         <h2>Total Price</h2>
-        <span>{`$${parseFloat(totalPrice.toFixed(2))}`}</span>
+        <span>{`$${totalPrice.toFixed(2)}`}</span>
       </Total>
       <ButtonContainer>
         <CustomButton className="close" onClick={() => onClick("modal-closed")}>
