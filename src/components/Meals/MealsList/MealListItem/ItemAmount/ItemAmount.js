@@ -1,11 +1,8 @@
 import { forwardRef, useState, useEffect } from "react";
 import Input from "../Input/Input";
-import Button from "../../../UI/Button.styled";
+import Button from "../../../../UI/Button.styled";
 
-const ItemAmount = forwardRef(function ItemAmount(
-  { onClick, totalAmount },
-  ref
-) {
+const ItemAmount = forwardRef(({ onClick, totalAmount, id }, ref) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -18,6 +15,7 @@ const ItemAmount = forwardRef(function ItemAmount(
     <>
       <Input
         ref={ref}
+        id={id}
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />

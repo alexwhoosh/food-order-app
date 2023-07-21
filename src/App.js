@@ -1,12 +1,13 @@
 import React, { useReducer } from "react";
 import BackgroundImg from "./components/BackgroundImg/BackgroundImg";
 import Header from "./components/Header/Header";
-import MealsSummary from "./components/MealsSummary/MealsSummary";
-import MealsList from "./components/MealsList/MealsList";
-import DUMMY_MEALS from "./components/MealsList/dummy-meals";
+import MealsSummary from "./components/Meals/MealsSummary/MealsSummary";
+import MealsList from "./components/Meals/MealsList/MealsList";
+import DUMMY_MEALS from "./components/Meals/MealsList/dummy-meals";
 import { OrderContextProvider } from "./context/order-context";
-import CartModal from "./components/CartModal/CartModal";
-import OrderConfirmedModal from "./components/CartModal/ConfirmationMessage/OrderConfirmedModal";
+import CartModal from "./components/modals/CartModal/CartModal";
+import OrderConfirmedModal from "./components/modals/ConfirmationMessageModal/OrderConfirmedModal";
+import { MainContent } from "./App.styled";
 
 const initModalState = {
   backdrop: false,
@@ -48,9 +49,11 @@ const App = () => {
   return (
     <OrderContextProvider>
       <Header onClick={dispatch} />
-      <BackgroundImg />
-      <MealsSummary />
-      <MealsList items={DUMMY_MEALS} />
+      <MainContent>
+        <BackgroundImg />
+        <MealsSummary />
+        <MealsList items={DUMMY_MEALS} />
+      </MainContent>
       {modal.cart && <CartModal onClose={dispatch} modalStatus={modal} />}
       {modal.confirm && (
         <OrderConfirmedModal onClose={dispatch} modalStatus={modal} />

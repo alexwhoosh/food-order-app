@@ -1,11 +1,11 @@
 import React from "react";
 import BackgroundImgContainer from "./BackgroundImg.styled";
-import image from "./images/meals.jpg";
+import image from "../../assets/images/meals.jpg";
 
 const BackgroundImg = () => {
   return (
     <BackgroundImgContainer>
-      <img src={image} alt="buffet" />;
+      <img src={image} alt="A table full of various dishes" />;
     </BackgroundImgContainer>
   );
 };

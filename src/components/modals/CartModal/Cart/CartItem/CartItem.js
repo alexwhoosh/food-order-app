@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import OrderContext from "../../../context/order-context";
-import { ButtonContainer } from "../Cart/Cart.styled";
+import OrderContext from "../../../../../context/order-context";
+import { ButtonContainer } from "../Cart.styled";
 import ItemContainer, {
   Price,
   Amount,
@@ -13,14 +13,14 @@ const CartItem = ({ name, price, amount }) => {
   const orderCtx = useContext(OrderContext);
 
   const addItem = () => {
-    orderCtx.dispatch({ type: name, amount: 1 });
+    orderCtx.dispatch({ type: "ADD_ITEM", name: name, amount: 1 });
   };
 
   const removeItem = () => {
-    orderCtx.dispatch({ type: name, amount: -1 });
+    orderCtx.dispatch({ type: "REMOVE_ITEM", name: name });
   };
 
-  const totalPrice = parseFloat((amount * price).toFixed(2));
+  const totalPrice = (amount * price).toFixed(2);
 
   return (
     <ItemContainer>
